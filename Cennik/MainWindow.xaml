@@ -1,0 +1,43 @@
+﻿<Window x:Class="Cennik.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cennik"
+        mc:Ignorable="d"
+        Title="Cenniki" Height="535.194" Width="525" Background="White">
+    <Window.OpacityMask>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="Black" Offset="0"/>
+            <GradientStop Color="White" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.OpacityMask>
+    <Grid Background="#FFFD4700">
+        <Grid Height="100" VerticalAlignment="Top">
+            <Grid Width="300" Height="30" Margin="109.2,70,109.2,10">
+            <ComboBox x:Name="CbKat"  ItemsSource="{Binding}" SelectedValuePath="Id" DisplayMemberPath="Nazwa" SelectionChanged="CbKat_SelectionChanged" Margin="10,0" ></ComboBox>
+            </Grid>
+            <Image Margin="175,10,175.4,35" RenderTransformOrigin="-0.224,-0.189">
+                <Image.Source>
+                    <BitmapImage UriSource="C:\Users\Michał\source\repos\Cennik\Cennik\Resource\logo.png"></BitmapImage>
+                </Image.Source>
+            </Image>
+        </Grid>
+        <Grid Height="351" VerticalAlignment="Center" Margin="0,105,0.4,49.6">
+            <DataGrid Name="dtGrid" ItemsSource="{Binding}" SelectedValue="Id" DisplayMemberPath="" HorizontalAlignment="Stretch" Height="331" Margin="10" VerticalAlignment="Stretch">
+                <DataGrid.ItemContainerStyle>
+                    <Style TargetType="DataGridRow">
+                        <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
+                    </Style>
+                </DataGrid.ItemContainerStyle>
+            </DataGrid>
+
+        </Grid>
+        <Grid VerticalAlignment="Bottom" Height="50">
+            <Button x:Name="btnGeneruj" Content="Generuj Cennik" Margin="0,11,10.4,10" Click="Button_Click" HorizontalAlignment="Right" Width="106"/>
+            <Button x:Name="btnDodaj" Content="Dodaj" HorizontalAlignment="Left" Margin="66,11,0,0" VerticalAlignment="Top" Width="75" Click="btnDodaj_Click_1"/>
+            <Button x:Name="btnUsun" Content="Usuń" HorizontalAlignment="Left" Margin="171,11,0,0" VerticalAlignment="Top" Width="75" Click="btnUsun_Click"/>
+
+        </Grid>
+    </Grid>
+</Window>
