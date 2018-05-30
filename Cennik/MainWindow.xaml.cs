@@ -15,6 +15,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Cennik.Connection;
 using Cennik.Bookmark;
+using Cennik.ViewModel;
+using Cennik.View;
+using System.Collections.ObjectModel;
 
 namespace Cennik
 {
@@ -24,30 +27,18 @@ namespace Cennik
     public partial class MainWindow : Window
     {
         private DAL _dal = new DAL();
-        private BookmarkService _bookmark = new BookmarkService();
-
-        private void FillCombobox()
-        {
-            CbKat.DataContext = _dal.FillCombo();
-        }
 
         public MainWindow()
         {
             InitializeComponent();
-            FillCombobox();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var kat = CbKat.SelectedItem as Kategorie;
-            _bookmark.GenerateDoc(_dal.FillDataGrid(kat.Id), kat.Nazwa.ToString());
+            this.DataContext = new ViewModelMainWindow();
         }
 
         private void CbKat_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var idKat = CbKat.SelectedValue;
+            dtGrid.ItemsSource = _dal.FillDataGridById(idKat);
             
-           dtGrid.DataContext = _dal.FillDataGrid(idKat);
         }
 
         private void btnDodaj_Click_1(object sender, RoutedEventArgs e)
@@ -59,19 +50,9 @@ namespace Cennik
         private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
         {
             var selected = ((DataGridRow)sender).Item as Przedmioty;
-
-            Window2 win2 = new Window2(selected);
-            win2.Show();
-        }
-
-        private void btnUsun_Click(object sender, RoutedEventArgs e)
-        {
-            var selected = dtGrid.SelectedItem as Przedmioty;
-
-            _dal.DeleteItem(selected.Id);
             var idKat = CbKat.SelectedValue;
-            dtGrid.DataContext = _dal.FillDataGrid(idKat);
-            
+            Window2 win2 = new Window2(selected, (int)idKat);
+            win2.Show();
         }
     }
 }

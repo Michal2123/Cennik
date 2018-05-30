@@ -1,0 +1,39 @@
+﻿<Window x:Class="Cennik.View.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodel="clr-namespace:Cennik.ViewModel"
+        xmlns:local="clr-namespace:Cennik.View"
+        mc:Ignorable="d"
+        Title="Window1" Height="282.454" Width="331.207">
+    <Window.Resources>
+        <viewmodel:ViewModelWindow1 x:Key="vm"></viewmodel:ViewModelWindow1>
+    </Window.Resources>
+    <Grid Margin="0,0,-0.4,0.2" Background="#FF199699" DataContext="{Binding Source={StaticResource vm}}">
+        <Grid Margin="0,0,0.2,-0.4" Height="43" VerticalAlignment="Bottom"  >
+            <Button x:Name="btnZapisz" Content="Zapisz" Margin="0,-1,9.6,8.2" Command="{Binding ClickCommand}" Height="31" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="106"/>
+        </Grid>
+        <Grid Margin="0,54,0.2,0" Height="156" VerticalAlignment="Top" >
+            <TextBox x:Name="tbNazwa" Margin="93,4,26.6,129" TextWrapping="Wrap" Text="{Binding Przedmioty.Nazwa}" />
+            <TextBox x:Name="tbKaucja" Margin="93,32,0,102" TextWrapping="Wrap" HorizontalAlignment="Left" Width="61" Text="{Binding Przedmioty.Kaucja}" />
+            <TextBox x:Name="tbWartosc" Margin="237,32,26.6,101" TextWrapping="Wrap" Text="{Binding Przedmioty.Wartosc}"/>
+            <TextBox x:Name="tbCena" Margin="93,96,0,38" TextWrapping="Wrap" HorizontalAlignment="Left" Width="61" Text="{Binding Przedmioty.Cena}"/>
+            <TextBox x:Name="tbDoba" Margin="237,63,26.6,70" TextWrapping="Wrap" Text="{Binding Przedmioty.StawkaDzien}"/>
+            <TextBox x:Name="tbGodz" Margin="93,64,0,70" TextWrapping="Wrap" HorizontalAlignment="Left" Width="61" Text="{Binding Przedmioty.StawkaGodzinowa}"/>
+
+            <Label Content="Nazwa" Margin="10,0,231.6,130"/>
+            <Label Content="Kaucja" Margin="10,28,231.6,102"/>
+            <Label Content="Cena" Margin="10,91,231.6,39"/>
+            <Label Content="Wartość" Margin="154,29,0,102" HorizontalAlignment="Left" Width="83"/>
+            <Label Content="Stawka Doba" Margin="154,59,0,72" HorizontalAlignment="Left" Width="83"/>
+            <Label Content="Stawka Godz." Margin="10,59,231.6,71"/>
+            <Label Content="Kategoria" Margin="10,122,231.6,10"/>
+
+            <ComboBox x:Name="cbKat" Margin="93,123,26.6,11" ItemsSource="{Binding Kategorie}" DisplayMemberPath="Nazwa" SelectedValuePath="Id" SelectedValue="{Binding SKategoria}" />
+        </Grid>
+        <Grid Margin="0,0,0.2,0" Height="57" VerticalAlignment="Top">
+            <Image Height="39" Margin="101,10,92.6,0" VerticalAlignment="Top" Source="..\Resource\logo.png"></Image>
+        </Grid>
+    </Grid>
+</Window>

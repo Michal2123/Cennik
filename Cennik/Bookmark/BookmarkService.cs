@@ -10,12 +10,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Diagnostics;
+using System.Collections.ObjectModel;
 
 namespace Cennik.Bookmark
 {
     public class BookmarkService
     {
-        public void GenerateDoc(List<Przedmioty> list, string fileName)
+        public void GenerateDoc(ObservableCollection<Przedmioty> list, string fileName)
         {
 
             int lp = 1;
