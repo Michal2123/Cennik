@@ -21,37 +21,37 @@ namespace Cennik.View
     /// </summary>
     public partial class Window2 : Window
     {
-        private Przedmioty _przedmioty = new Przedmioty();
-        private int _idKat;
         private DAL _dal = new DAL();
         private Prise _prise = new Prise();
+        private int idKat;
 
-        public Window2(Przedmioty przedmioty, int idKat)
+        public ViewModelWindow2 ViewModelWindow2 { get; set; }
+
+
+        public Window2(Przedmioty selected, int idKat)
         {
-            _przedmioty = przedmioty;
-            _idKat = idKat;
+            ViewModelWindow2 = new ViewModelWindow2(selected, idKat);
             InitializeComponent();
-            this.DataContext = new ViewModelWindow2();
-            FillText();
-            
         }
+
+   
 
         public void FillText()
         {
-            tbCena.Text = _przedmioty.Cena.ToString();
-            tbDoba.Text = _przedmioty.StawkaDzien.ToString();
-            tbGodz.Text = _przedmioty.StawkaGodzinowa.ToString();
-            tbKaucja.Text = _przedmioty.Cena.ToString();
-            tbNazwa.Text = _przedmioty.Nazwa.ToString();
-            tbWartosc.Text = _przedmioty.Wartosc.ToString();
-            cbKat.SelectedValue = _idKat;
+            //tbCena.Text = przedmiot.Cena.ToString();
+            //tbDoba.Text = przedmiot.StawkaDzien.ToString();
+            //tbGodz.Text = przedmiot.StawkaGodzinowa.ToString();
+            //tbKaucja.Text = przedmiot.Cena.ToString();
+            //tbNazwa.Text = przedmiot.Nazwa.ToString();
+            //tbWartosc.Text = przedmiot.Wartosc.ToString();
+            //cbKat.SelectedValue = _idKat;
         }
 
         private void btnZapisz_Click(object sender, RoutedEventArgs e)
         {
-            int isPrise = _prise.IsPrise(Convert.ToDecimal(tbCena.Text));
-            _dal.ChangeItemProp(_przedmioty.Id, tbNazwa.Text, Convert.ToDecimal(tbKaucja.Text), cbKat.SelectedValue, Convert.ToDecimal(tbDoba.Text), Convert.ToDecimal(tbGodz.Text), Convert.ToDecimal(tbCena.Text), Convert.ToInt32(tbWartosc.Text), isPrise);
-            this.Close();
+            //int isPrise = _prise.IsPrise(Convert.ToDecimal(tbCena.Text));
+            //_dal.ChangeItemProp(przedmiot.Id, tbNazwa.Text, Convert.ToDecimal(tbKaucja.Text), cbKat.SelectedValue, Convert.ToDecimal(tbDoba.Text), Convert.ToDecimal(tbGodz.Text), Convert.ToDecimal(tbCena.Text), Convert.ToInt32(tbWartosc.Text), isPrise);
+            //this.Close();
         }
     }
 }

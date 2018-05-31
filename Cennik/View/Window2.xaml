@@ -4,23 +4,22 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewmodel="clr-namespace:Cennik.ViewModel"
-        xmlns:local="clr-namespace:Cennik.View"
         mc:Ignorable="d"
-        Title="Window2" Height="274.46" Width="331.207">
-    <Window.Resources>
-        <viewmodel:ViewModelWindow2 x:Key="vm2"></viewmodel:ViewModelWindow2>
-    </Window.Resources>
-    <Grid Margin="0,0,-0.4,0.2" Background="#FF6B9F02" DataContext="{Binding Source={StaticResource vm2}}">
+        Title="Window2" Height="274.46" Width="331.207"
+        DataContext="{Binding ViewModelWindow2, RelativeSource={RelativeSource Self}}">
+    
+   
+    <Grid Margin="0,0,-0.4,0.2" Background="#FF6B9F02">
         <Grid Margin="0,205,0.2,-0.4">
             <Button x:Name="btnZapisz" Content="Zapisz" Command="{Binding ClickCommand}"  Margin="0,0,9.8,9.2" Height="21" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="106" Click="btnZapisz_Click"/>
         </Grid>
         <Grid Margin="1,54,0.2,0" Height="146" VerticalAlignment="Top" >
-            <TextBox x:Name="tbNazwa" Margin="95,0,23.6,124" TextWrapping="Wrap" Text="{Binding Przedmioty.Nazwa}" />
-            <TextBox x:Name="tbKaucja" HorizontalAlignment="Left" Margin="95,27,0,96" TextWrapping="Wrap" Width="61" Text="{Binding Przedmioty.Kaucja}" />
-            <TextBox x:Name="tbWartosc" Margin="239,27,23.2,96" TextWrapping="Wrap" Text="{Binding Przedmioty.Wartosc}" />
-            <TextBox x:Name="tbCena" HorizontalAlignment="Left" Margin="95,91,0,32" TextWrapping="Wrap" Width="61" Text="{Binding Przedmioty.Cena}" />
-            <TextBox x:Name="tbDoba" Margin="239,58,23.2,65" TextWrapping="Wrap" Text="{Binding Przedmioty.StawkaDzien}" />
-            <TextBox x:Name="tbGodz" HorizontalAlignment="Left" Margin="95,59,0,64" TextWrapping="Wrap" Width="61" Text="{Binding Przedmioty.StawkaGodzinowa}" />
+            <TextBox x:Name="tbNazwa" Margin="95,0,23.6,124" TextWrapping="Wrap" Text="{Binding Przedmiot.Nazwa}" />
+            <TextBox x:Name="tbKaucja" HorizontalAlignment="Left" Margin="95,27,0,96" TextWrapping="Wrap" Width="61" Text="{Binding Przedmiot.Kaucja}" />
+            <TextBox x:Name="tbWartosc" Margin="239,27,23.2,96" TextWrapping="Wrap" Text="{Binding Przedmiot.Wartosc}" />
+            <TextBox x:Name="tbCena" HorizontalAlignment="Left" Margin="95,91,0,32" TextWrapping="Wrap" Width="61" Text="{Binding Przedmiot.Cena}" />
+            <TextBox x:Name="tbDoba" Margin="239,58,23.2,65" TextWrapping="Wrap" Text="{Binding Przedmiot.StawkaDzien}" />
+            <TextBox x:Name="tbGodz" HorizontalAlignment="Left" Margin="95,59,0,64" TextWrapping="Wrap" Width="61" Text="{Binding Przedmiot.StawkaGodzinowa}" />
 
             <Label Content="Nazwa" Margin="10,-5,230.2,125"/>
             <Label Content="Kaucja" Margin="10,23,230.2,97"/>
@@ -30,7 +29,7 @@
             <Label Content="Stawka Godz." Margin="10,55,228.6,66"/>
             <Label Content="Kategoria" Margin="10,117,230.2,3"/>
 
-            <ComboBox x:Name="cbKat" Margin="95,119,23.2,5" ItemsSource="{Binding Kategorie}" DisplayMemberPath="Nazwa" SelectedValuePath="Id" SelectedValue="{Binding SKategoria}" />
+            <ComboBox x:Name="cbKat" Margin="95,119,23.2,5" ItemsSource="{Binding Kategorie}" DisplayMemberPath="Nazwa" SelectedValuePath="Id" SelectedValue="{Binding Przedmiot.IdKategorii}" />
         </Grid>
         <Grid Margin="0,0,0.2,195.6">
             <Image Margin="101,0,92.6,0" Source="..\Resource\logo.png" Height="49" VerticalAlignment="Top"/>

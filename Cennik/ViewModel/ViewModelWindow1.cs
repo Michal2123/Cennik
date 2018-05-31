@@ -28,8 +28,6 @@ namespace Cennik.ViewModel
             Kategorie = _dal.FillCombo();
             ClickCommand = new DelegateCommand(ClickedMethod);
             Przedmioty = new Przedmioty();
-            
-
         }
 
         private ObservableCollection<Kategorie> _kategorie;

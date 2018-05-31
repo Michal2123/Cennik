@@ -23,12 +23,13 @@ namespace Cennik.ViewModel
             private set;
 
         }
-
-        public ViewModelWindow2()
-        {            
+        
+        public ViewModelWindow2(Przedmioty przedmiot, int idKat) 
+        {
             Kategorie = _dal.FillCombo();
             ClickCommand = new DelegateCommand(ClickedMethod);
-            Przedmioty = new Przedmioty();
+            Przedmiot = przedmiot;
+            this.idKat = idKat;
         }
 
         private ObservableCollection<Kategorie> _kategorie;
@@ -45,7 +46,7 @@ namespace Cennik.ViewModel
         }
 
         private Przedmioty _przedmioty;
-        public Przedmioty Przedmioty
+        public Przedmioty Przedmiot
         {
             get
             {
@@ -58,6 +59,8 @@ namespace Cennik.ViewModel
         }
 
         private int _sKategoria;
+        private int idKat;
+
         public int SKategoria
         {
             get
@@ -72,6 +75,7 @@ namespace Cennik.ViewModel
 
         public void ClickedMethod()
         {
+            var toSave = Przedmiot;
             //int isPrise = _prise.IsPrise(_przedmioty.Cena);
             //_dal.ChangeItemProp(_przedmioty, _sKategoria, isPrise);
         }

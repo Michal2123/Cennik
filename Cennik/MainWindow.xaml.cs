@@ -51,6 +51,7 @@ namespace Cennik
         {
             var selected = ((DataGridRow)sender).Item as Przedmioty;
             var idKat = CbKat.SelectedValue;
+
             Window2 win2 = new Window2(selected, (int)idKat);
             win2.Show();
         }

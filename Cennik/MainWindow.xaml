@@ -8,9 +8,7 @@
         mc:Ignorable="d"
         Title="Cenniki" Height="535.194" Width="525" Background="White"
         DataContext="{DynamicResource ViewModelMain}">
-    <Window.Resources>
-        <vm:ViewModelMainWindow x:Key="ViewModelMain"/>
-    </Window.Resources>
+   
     <Window.OpacityMask>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="Black" Offset="0"/>
