@@ -8,12 +8,12 @@ namespace Cennik.Connection
     using Prism.Mvvm;
 
     [Table("Kategorie")]
-    public partial class Kategorie : BindableBase
+    public partial class Kategoria : BindableBase
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Kategorie()
+        public Kategoria()
         {
-            Przedmioty = new HashSet<Przedmioty>();
+            Przedmioty = new HashSet<Przedmiot>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -23,6 +23,6 @@ namespace Cennik.Connection
         public string Nazwa { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Przedmioty> Przedmioty { get; set; }
+        public virtual ICollection<Przedmiot> Przedmioty { get; set; }
     }
 }

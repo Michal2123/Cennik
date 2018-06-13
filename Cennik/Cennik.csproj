@@ -90,6 +90,7 @@
     </ApplicationDefinition>
     <Compile Include="Bookmark\BookmarkService.cs" />
     <Compile Include="Helpers\Prise.cs" />
+    <Compile Include="Models\Kategoria.cs" />
     <Compile Include="Models\Przedmiot.cs" />
     <Compile Include="ViewModel\ViewModelMainWindow.cs" />
     <Compile Include="ViewModel\ViewModelWindow1.cs" />
@@ -109,9 +110,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Connection\DAL.cs" />
-    <Compile Include="Models\EntityModel.cs" />
-    <Compile Include="Models\Kategorie.cs" />
-    <Compile Include="Models\Przedmioty.cs" />
+    <Compile Include="Context\EntityModel.cs" />
+    <Compile Include="Context\Kategorie.cs" />
+    <Compile Include="Context\Przedmioty.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -150,7 +151,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

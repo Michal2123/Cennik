@@ -23,35 +23,19 @@ namespace Cennik.View
     {
         private DAL _dal = new DAL();
         private Prise _prise = new Prise();
-        private int idKat;
 
         public ViewModelWindow2 ViewModelWindow2 { get; set; }
 
 
-        public Window2(Przedmioty selected, int idKat)
+        public Window2(Przedmiot selected, int idKat)
         {
             ViewModelWindow2 = new ViewModelWindow2(selected, idKat);
             InitializeComponent();
         }
 
-   
-
-        public void FillText()
+        public Window2()
         {
-            //tbCena.Text = przedmiot.Cena.ToString();
-            //tbDoba.Text = przedmiot.StawkaDzien.ToString();
-            //tbGodz.Text = przedmiot.StawkaGodzinowa.ToString();
-            //tbKaucja.Text = przedmiot.Cena.ToString();
-            //tbNazwa.Text = przedmiot.Nazwa.ToString();
-            //tbWartosc.Text = przedmiot.Wartosc.ToString();
-            //cbKat.SelectedValue = _idKat;
-        }
 
-        private void btnZapisz_Click(object sender, RoutedEventArgs e)
-        {
-            //int isPrise = _prise.IsPrise(Convert.ToDecimal(tbCena.Text));
-            //_dal.ChangeItemProp(przedmiot.Id, tbNazwa.Text, Convert.ToDecimal(tbKaucja.Text), cbKat.SelectedValue, Convert.ToDecimal(tbDoba.Text), Convert.ToDecimal(tbGodz.Text), Convert.ToDecimal(tbCena.Text), Convert.ToInt32(tbWartosc.Text), isPrise);
-            //this.Close();
         }
     }
 }

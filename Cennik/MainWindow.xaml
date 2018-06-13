@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Cennik"
         mc:Ignorable="d"
         Title="Cenniki" Height="535.194" Width="525" Background="White"
-        DataContext="{DynamicResource ViewModelMain}">
+        DataContext="{Binding ViewModelMainWindow, RelativeSource={RelativeSource Self}}">
    
     <Window.OpacityMask>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -18,12 +18,12 @@
     <Grid Background="#FFFD4700">
         <Grid Height="100" VerticalAlignment="Top">
             <Grid Width="300" Height="30" Margin="109.2,70,109.2,10">
-            <ComboBox x:Name="CbKat"  ItemsSource="{Binding Kategorie}" SelectedItem="{Binding SelectedKat}" SelectedValuePath="Id" DisplayMemberPath="Nazwa" SelectionChanged="CbKat_SelectionChanged" Margin="10,0" ></ComboBox>
+                <ComboBox x:Name="CbKat"  ItemsSource="{Binding Kategoria}" SelectedItem="{Binding SelectedKat}" SelectedValuePath="Id" DisplayMemberPath="Nazwa" SelectionChanged="CbKat_SelectionChanged" Margin="10,0" ></ComboBox>
             </Grid>
             <Image Margin="175,10,175.4,35" RenderTransformOrigin="-0.224,-0.189" Source="Resource\logo.png"></Image>
         </Grid>
         <Grid Height="351" VerticalAlignment="Center" Margin="0,105,0.4,49.6">
-            <DataGrid Name="dtGrid" ItemsSource="{Binding Przedmioty}" SelectedItem="{Binding SelectedItem}" SelectedValuePath="Id" DisplayMemberPath="Nazwa" HorizontalAlignment="Stretch" Height="331" Margin="10" VerticalAlignment="Stretch">
+            <DataGrid Name="dtGrid" ItemsSource="{Binding Przedmiot}" SelectedItem="{Binding SelectedItem}" SelectedValuePath="Id" DisplayMemberPath="Nazwa" HorizontalAlignment="Stretch" Height="331" Margin="10" VerticalAlignment="Stretch">
                 <DataGrid.ItemContainerStyle>
                     <Style TargetType="DataGridRow">
                         <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
@@ -34,7 +34,7 @@
         </Grid>
         <Grid VerticalAlignment="Bottom" Height="50">
             <Button x:Name="btnGeneruj" Content="Generuj Cennik" Margin="0,11,10.4,10" HorizontalAlignment="Right" Width="106" Command="{Binding ClickCommandBookmark}"/>
-            <Button x:Name="btnDodaj" Content="Dodaj" HorizontalAlignment="Left" Margin="66,11,0,0" VerticalAlignment="Top" Width="75" Click="btnDodaj_Click_1"/>
+            <Button x:Name="btnDodaj" Content="Dodaj" HorizontalAlignment="Left" Margin="66,11,0,0" VerticalAlignment="Top" Width="75" Command="{Binding ClickCommandWindow1}"/>
             <Button x:Name="btnUsun" Content="Usuń" HorizontalAlignment="Left" Margin="171,11,0,0" VerticalAlignment="Top" Width="75" Command="{Binding ClickCommandDelete}"/>
 
         </Grid>

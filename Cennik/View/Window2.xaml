@@ -11,7 +11,7 @@
    
     <Grid Margin="0,0,-0.4,0.2" Background="#FF6B9F02">
         <Grid Margin="0,205,0.2,-0.4">
-            <Button x:Name="btnZapisz" Content="Zapisz" Command="{Binding ClickCommand}"  Margin="0,0,9.8,9.2" Height="21" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="106" Click="btnZapisz_Click"/>
+            <Button x:Name="btnZapisz" Content="Zapisz" Command="{Binding ClickCommand}"  Margin="0,0,9.8,9.2" Height="21" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="106"/>
         </Grid>
         <Grid Margin="1,54,0.2,0" Height="146" VerticalAlignment="Top" >
             <TextBox x:Name="tbNazwa" Margin="95,0,23.6,124" TextWrapping="Wrap" Text="{Binding Przedmiot.Nazwa}" />
@@ -29,7 +29,7 @@
             <Label Content="Stawka Godz." Margin="10,55,228.6,66"/>
             <Label Content="Kategoria" Margin="10,117,230.2,3"/>
 
-            <ComboBox x:Name="cbKat" Margin="95,119,23.2,5" ItemsSource="{Binding Kategorie}" DisplayMemberPath="Nazwa" SelectedValuePath="Id" SelectedValue="{Binding Przedmiot.IdKategorii}" />
+            <ComboBox x:Name="cbKat" Margin="95,119,23.2,5" ItemsSource="{Binding Kategorie}" DisplayMemberPath="Nazwa" SelectedValuePath="Id" SelectedValue="{Binding SKategoria}" />
         </Grid>
         <Grid Margin="0,0,0.2,195.6">
             <Image Margin="101,0,92.6,0" Source="..\Resource\logo.png" Height="49" VerticalAlignment="Top"/>

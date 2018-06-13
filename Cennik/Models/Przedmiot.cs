@@ -8,12 +8,20 @@ namespace Cennik.Models
 {
     public class Przedmiot
     {
-        public string Name { get; set; }
-        public string Kaucja { get; set; }
-        public string Wartosc { get; set; }
-        public string Doba { get; set; }
-        public string Godz { get; set; }
-        public string Cena { get; set; }
-        public string Kategoria { get; set; }
+        public int Id { get; set; }
+
+        public string Nazwa { get; set; }
+
+        public int? IdKategorii { get; set; }
+
+        public decimal? Kaucja { get; set; }
+
+        public decimal? StawkaDzien { get; set; }
+
+        public decimal? StawkaGodzinowa { get; set; }
+
+        public decimal? Cena { get; set; }
+
+        public int? Wartosc { get; set; }
     }
 }

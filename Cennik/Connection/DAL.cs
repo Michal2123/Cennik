@@ -10,7 +10,7 @@ namespace Cennik.Connection
 {
     class DAL
     {
-        public ObservableCollection<Kategorie> FillCombo()
+        public ObservableCollection<Kategoria> FillCombo()
         {
             using (EntityModel context = new EntityModel())
             {
@@ -18,38 +18,38 @@ namespace Cennik.Connection
                                  orderby oKategorie.Nazwa
                                  select oKategorie).ToList();
 
-                ObservableCollection<Kategorie>myCollection = new ObservableCollection<Kategorie>(kategorie);
+                ObservableCollection<Kategoria>myCollection = new ObservableCollection<Kategoria>(kategorie);
                 return myCollection;
             }
         }
 
-        public ObservableCollection<Przedmioty> FillDataGridById(object idKat)
+        public ObservableCollection<Przedmiot> FillDataGridById(object idKat)
         {
             using (EntityModel context = new EntityModel())
             {
                 var przedmioty = context.Przedmioty.Where(oPrzedmioty => oPrzedmioty.IdKategorii == (int)idKat).ToList();
-                ObservableCollection<Przedmioty> myCollection = new ObservableCollection<Przedmioty>(przedmioty);
+                ObservableCollection<Przedmiot> myCollection = new ObservableCollection<Przedmiot>(przedmioty);
                 return myCollection;
             }
         }
 
-        public ObservableCollection<Przedmioty> FillDataGrid()
+        public ObservableCollection<Przedmiot> FillDataGrid()
         {
             using (EntityModel context = new EntityModel())
             {
                 var przedmioty = (from oPrzedmioty in context.Przedmioty
                                   orderby oPrzedmioty.IdKategorii
                                   select oPrzedmioty).ToList();
-                ObservableCollection<Przedmioty> myCollection = new ObservableCollection<Przedmioty>(przedmioty);
+                ObservableCollection<Przedmiot> myCollection = new ObservableCollection<Przedmiot>(przedmioty);
                 return myCollection;
             }
         }
 
-        public void AddNewItem(Przedmioty item,int sKategoria, int isPrise, int isSki)
+        public void AddNewItem(Przedmiot item,int sKategoria, int isPrise, int isSki)
         {
             using (EntityModel context = new EntityModel())
             {
-                var przedmiot = new Przedmioty();
+                var przedmiot = new Przedmiot();
 
                 przedmiot.Nazwa = item.Nazwa;
                 przedmiot.IdKategorii = sKategoria;
@@ -66,26 +66,26 @@ namespace Cennik.Connection
             }
         }
 
-        public void ChangeItemProp(int id, string nazwa, decimal kaucja, object idKategorii, decimal stawkaDoba, decimal stawkaGodz, decimal cena, int wartosc, int isPrise)
+        public void ChangeItemProp(Przedmiot przedmiot, int isPrise)
         {
             using (EntityModel context = new EntityModel())
             {
-                var item = context.Przedmioty.Where(oItem => oItem.Id == id).First();
+                var item = context.Przedmioty.Where(oItem => oItem.Id == przedmiot.Id).First();
 
-                item.Nazwa = nazwa;
-                item.Kaucja = kaucja;
-                item.StawkaDzien = stawkaDoba;
-                item.StawkaGodzinowa = stawkaGodz;
-                item.Wartosc = wartosc;
-                item.Cena = cena;
-                item.IdKategorii = (int)idKategorii;
+                item.Nazwa = przedmiot.Nazwa;
+                item.Kaucja = przedmiot.Kaucja;
+                item.StawkaDzien = przedmiot.StawkaDzien;
+                item.StawkaGodzinowa = przedmiot.StawkaGodzinowa;
+                item.Wartosc = przedmiot.Wartosc;
+                item.Cena = przedmiot.Cena;
+                item.IdKategorii = przedmiot.IdKategorii;
                 item.IsPrice = isPrise;
 
                 context.SaveChanges();
             }
         }
 
-        public void DeleteItem(Przedmioty przedmioty)
+        public void DeleteItem(Przedmiot przedmioty)
         {
             using (EntityModel context = new EntityModel())
             {
@@ -105,13 +105,13 @@ namespace Cennik.Connection
 
                 var przedmiot = new Przedmiot();
 
-                przedmiot.Name = item.Nazwa;
-                przedmiot.Kaucja = item.Kaucja.ToString();
-                przedmiot.Wartosc = item.Wartosc.ToString();
-                przedmiot.Doba = item.StawkaDzien.ToString();
-                przedmiot.Godz = item.StawkaGodzinowa.ToString();
-                przedmiot.Cena = item.Cena.ToString();
-                przedmiot.Kategoria = kat.Nazwa;
+                przedmiot.Nazwa = item.Nazwa;
+                przedmiot.Kaucja = item.Kaucja;
+                przedmiot.Wartosc = item.Wartosc;
+                przedmiot.StawkaDzien = item.StawkaDzien;
+                przedmiot.StawkaGodzinowa = item.StawkaGodzinowa;
+                przedmiot.Cena = item.Cena;
+                przedmiot.IdKategorii = kat.Id;
 
                 return przedmiot;
             }

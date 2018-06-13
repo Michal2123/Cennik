@@ -8,7 +8,7 @@ using Prism.Mvvm;
 using Prism.Commands;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
-using Cennik.Models;
+using Cennik.View;
 
 namespace Cennik.ViewModel
 {
@@ -24,16 +24,16 @@ namespace Cennik.ViewModel
 
         }
         
-        public ViewModelWindow2(Przedmioty przedmiot, int idKat) 
+        public ViewModelWindow2(Przedmiot przedmiot, int idKat) 
         {
             Kategorie = _dal.FillCombo();
-            ClickCommand = new DelegateCommand(ClickedMethod);
+            ClickCommand = new DelegateCommand(ClickedMethodSave);
             Przedmiot = przedmiot;
-            this.idKat = idKat;
+            SKategoria = idKat;
         }
 
-        private ObservableCollection<Kategorie> _kategorie;
-        public ObservableCollection<Kategorie> Kategorie
+        private ObservableCollection<Kategoria> _kategorie;
+        public ObservableCollection<Kategoria> Kategorie
         {
             get
             {
@@ -45,21 +45,20 @@ namespace Cennik.ViewModel
             }
         }
 
-        private Przedmioty _przedmioty;
-        public Przedmioty Przedmiot
+        private Przedmiot _przedmiot;
+        public Przedmiot Przedmiot
         {
             get
             {
-                return _przedmioty;
+                return _przedmiot;
             }
             set
             {
-                _przedmioty = value;
+                _przedmiot = value;
             }
         }
 
         private int _sKategoria;
-        private int idKat;
 
         public int SKategoria
         {
@@ -73,11 +72,11 @@ namespace Cennik.ViewModel
             }
         }
 
-        public void ClickedMethod()
+        public void ClickedMethodSave()
         {
             var toSave = Przedmiot;
-            //int isPrise = _prise.IsPrise(_przedmioty.Cena);
-            //_dal.ChangeItemProp(_przedmioty, _sKategoria, isPrise);
+            int isPrise = _prise.IsPrise(toSave.Cena);
+            _dal.ChangeItemProp(toSave, isPrise);          
         }
     }
 }

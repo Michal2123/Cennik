@@ -16,7 +16,7 @@ namespace Cennik.Bookmark
 {
     public class BookmarkService
     {
-        public void GenerateDoc(ObservableCollection<Przedmioty> list, string fileName)
+        public void GenerateDoc(ObservableCollection<Przedmiot> list, string fileName)
         {
 
             int lp = 1;
@@ -114,7 +114,7 @@ namespace Cennik.Bookmark
                         )));
                     table.AppendChild(props);
 
-                    foreach (Przedmioty item in list)
+                    foreach (Przedmiot item in list)
                     {
                         string typStawkiSlownie = string.Empty;
                         if (isPrise == true)
@@ -157,6 +157,17 @@ namespace Cennik.Bookmark
 
                     }
                     newParagraph.InsertBeforeSelf(table);
+
+                    bmName = "Nazwa";
+                    bookmark = res.Single();
+                        parent = bookmark.Parent;
+                        var paragraph =
+                            new Paragraph(new Run(new Text(string.Empty)),
+                                new Paragraph(
+                                    new Run(new Text($"{fileName}")))
+                                );
+                        parent.InsertBeforeSelf(paragraph);
+                        parent.Remove();
                 }
                 document.Close();
             }

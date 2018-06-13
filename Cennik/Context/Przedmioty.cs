@@ -7,7 +7,7 @@ namespace Cennik.Connection
     using System.Data.Entity.Spatial;
 
     [Table("Przedmioty")]
-    public partial class Przedmioty
+    public partial class Przedmiot
     {
         public int Id { get; set; }
 
@@ -29,6 +29,6 @@ namespace Cennik.Connection
 
         public int? IsSki { get; set; }
 
-        public virtual Kategorie Kategorie { get; set; }
+        public virtual Kategoria Kategorie { get; set; }
     }
 }

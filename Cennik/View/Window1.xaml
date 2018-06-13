@@ -6,11 +6,10 @@
         xmlns:viewmodel="clr-namespace:Cennik.ViewModel"
         xmlns:local="clr-namespace:Cennik.View"
         mc:Ignorable="d"
-        Title="Window1" Height="282.454" Width="331.207">
-    <Window.Resources>
-        <viewmodel:ViewModelWindow1 x:Key="vm"></viewmodel:ViewModelWindow1>
-    </Window.Resources>
-    <Grid Margin="0,0,-0.4,0.2" Background="#FF199699" DataContext="{Binding Source={StaticResource vm}}">
+        Title="Window1" Height="282.454" Width="331.207"
+        DataContext="{Binding ViewModelWindow1, RelativeSource={RelativeSource Self}}">
+
+    <Grid Margin="0,0,-0.4,0.2" Background="#FF199699">
         <Grid Margin="0,0,0.2,-0.4" Height="43" VerticalAlignment="Bottom"  >
             <Button x:Name="btnZapisz" Content="Zapisz" Margin="0,-1,9.6,8.2" Command="{Binding ClickCommand}" Height="31" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="106"/>
         </Grid>

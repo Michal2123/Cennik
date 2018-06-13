@@ -13,12 +13,12 @@ namespace Cennik.Connection
             Database.SetInitializer<EntityModel>(null);
         }
 
-        public virtual DbSet<Kategorie> Kategorie { get; set; }
-        public virtual DbSet<Przedmioty> Przedmioty { get; set; }
+        public virtual DbSet<Kategoria> Kategorie { get; set; }
+        public virtual DbSet<Przedmiot> Przedmioty { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Kategorie>()
+            modelBuilder.Entity<Kategoria>()
                 .HasMany(e => e.Przedmioty)
                 .WithOptional(e => e.Kategorie)
                 .HasForeignKey(e => e.IdKategorii);

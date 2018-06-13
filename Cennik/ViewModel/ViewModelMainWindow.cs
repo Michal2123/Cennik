@@ -16,16 +16,16 @@ namespace Cennik.ViewModel
     {
         private DAL _dal = new DAL();
         private BookmarkService _bookmark = new BookmarkService();
-        public ObservableCollection<Przedmioty> Przedmioty { get; set; }
-        public ObservableCollection<Kategorie> Kategorie { get; set; }
+        public ObservableCollection<Przedmiot> Przedmiot { get; set; }
+        public ObservableCollection<Kategoria> Kategoria { get; set; }
 
         public ICommand ClickCommandDelete { get; private set; }
         public ICommand ClickCommandBookmark { get; private set; }
-        public ICommand ClickCommandWindow2 { get; private set; }
+        public ICommand ClickCommandWindow1 { get; private set; }
 
 
-        Przedmioty _SelectedItem;
-        public Przedmioty SelectedItem
+        Przedmiot _SelectedItem;
+        public Przedmiot SelectedItem
         {
             get
             {
@@ -37,8 +37,8 @@ namespace Cennik.ViewModel
             }
         }
 
-        Kategorie _SelectedKat;
-        public Kategorie SelectedKat
+        Kategoria _SelectedKat;
+        public Kategoria SelectedKat
         {
             get
             {
@@ -52,11 +52,11 @@ namespace Cennik.ViewModel
 
         public ViewModelMainWindow()
         {
-            Kategorie = _dal.FillCombo();
-            Przedmioty = _dal.FillDataGrid();
+            Kategoria = _dal.FillCombo();
+            Przedmiot = _dal.FillDataGrid();
             ClickCommandDelete = new DelegateCommand(DeleteClickedMethod);
             ClickCommandBookmark = new DelegateCommand(BookmarkClickedMethod);
-            ClickCommandWindow2 = new DelegateCommand(Window2ClickedMethod);
+            ClickCommandWindow1 = new DelegateCommand(Window1ClickedMethod);
         }
 
         public void DeleteClickedMethod()
@@ -68,14 +68,14 @@ namespace Cennik.ViewModel
         public void BookmarkClickedMethod()
         {
             var kat = SelectedKat;
-            _bookmark.GenerateDoc(_dal.FillDataGridById(kat.Id), kat.Nazwa.ToString());
+            var table = _dal.FillDataGridById(kat.Id);
+            _bookmark.GenerateDoc(table, kat.Nazwa);
         }
 
-        public void Window2ClickedMethod()
+        public void Window1ClickedMethod()
         {
-
-            //Window2 win2 = new Window2();
-            //win2.Show();
+            Window1 win1 = new Window1();
+            win1.Show();
         }
     }
 }

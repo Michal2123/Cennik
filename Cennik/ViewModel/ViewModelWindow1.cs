@@ -8,6 +8,7 @@ using Prism.Mvvm;
 using Prism.Commands;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
+using Cennik.View;
 
 namespace Cennik.ViewModel
 {
@@ -27,11 +28,11 @@ namespace Cennik.ViewModel
         {
             Kategorie = _dal.FillCombo();
             ClickCommand = new DelegateCommand(ClickedMethod);
-            Przedmioty = new Przedmioty();
+            Przedmioty = new Przedmiot();
         }
 
-        private ObservableCollection<Kategorie> _kategorie;
-        public ObservableCollection<Kategorie> Kategorie
+        private ObservableCollection<Kategoria> _kategorie;
+        public ObservableCollection<Kategoria> Kategorie
         {
             get
             {
@@ -43,8 +44,8 @@ namespace Cennik.ViewModel
             }
         }
 
-        private Przedmioty _przedmioty;
-        public Przedmioty Przedmioty
+        private Przedmiot _przedmioty;
+        public Przedmiot Przedmioty
         {
             get
             {

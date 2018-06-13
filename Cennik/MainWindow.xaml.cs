@@ -28,10 +28,14 @@ namespace Cennik
     {
         private DAL _dal = new DAL();
 
+        public ViewModelMainWindow ViewModelMainWindow { get; set; }
+
         public MainWindow()
         {
+            ViewModelMainWindow = new ViewModelMainWindow();
             InitializeComponent();
-            this.DataContext = new ViewModelMainWindow();
+            CbKat.SelectedIndex = 0;
+            
         }
 
         private void CbKat_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -41,15 +45,9 @@ namespace Cennik
             
         }
 
-        private void btnDodaj_Click_1(object sender, RoutedEventArgs e)
-        {
-            Window1 win1 = new Window1();
-            win1.Show();
-        }
-
         private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var selected = ((DataGridRow)sender).Item as Przedmioty;
+            var selected = ((DataGridRow)sender).Item as Przedmiot;
             var idKat = CbKat.SelectedValue;
 
             Window2 win2 = new Window2(selected, (int)idKat);
