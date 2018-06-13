@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Cennik.Connection;
+﻿using System.Windows;
 using Cennik.ViewModel;
 
 namespace Cennik.View
@@ -21,10 +8,13 @@ namespace Cennik.View
     /// </summary>
     public partial class Window1 : Window
     {
-        public Window1()
+        private MainWindow Mainwindow { get; set; }
+
+        public Window1(MainWindow mainWindow)
         {
+            Mainwindow = mainWindow;
             InitializeComponent();
-            this.DataContext = new ViewModelWindow1();
+            this.DataContext = new ViewModelWindow1(this, Mainwindow);
         }
     }
 }

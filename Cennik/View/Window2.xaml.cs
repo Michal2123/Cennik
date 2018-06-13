@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 using Cennik.Connection;
 using Cennik.ViewModel;
 
@@ -29,13 +17,8 @@ namespace Cennik.View
 
         public Window2(Przedmiot selected, int idKat)
         {
-            ViewModelWindow2 = new ViewModelWindow2(selected, idKat);
+            ViewModelWindow2 = new ViewModelWindow2(selected, idKat, this);
             InitializeComponent();
-        }
-
-        public Window2()
-        {
-
         }
     }
 }

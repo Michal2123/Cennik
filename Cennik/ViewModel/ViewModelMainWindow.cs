@@ -2,12 +2,7 @@
 using Cennik.Connection;
 using Cennik.View;
 using Prism.Commands;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Cennik.ViewModel
@@ -18,6 +13,7 @@ namespace Cennik.ViewModel
         private BookmarkService _bookmark = new BookmarkService();
         public ObservableCollection<Przedmiot> Przedmiot { get; set; }
         public ObservableCollection<Kategoria> Kategoria { get; set; }
+        public MainWindow Window { get; set; }
 
         public ICommand ClickCommandDelete { get; private set; }
         public ICommand ClickCommandBookmark { get; private set; }
@@ -50,8 +46,9 @@ namespace Cennik.ViewModel
             }
         }
 
-        public ViewModelMainWindow()
+        public ViewModelMainWindow(MainWindow window)
         {
+            Window = window;
             Kategoria = _dal.FillCombo();
             Przedmiot = _dal.FillDataGrid();
             ClickCommandDelete = new DelegateCommand(DeleteClickedMethod);
@@ -63,6 +60,7 @@ namespace Cennik.ViewModel
         {
             var item = SelectedItem;
             _dal.DeleteItem(item);
+            Window.Refresh();
         }
 
         public void BookmarkClickedMethod()
@@ -74,7 +72,7 @@ namespace Cennik.ViewModel
 
         public void Window1ClickedMethod()
         {
-            Window1 win1 = new Window1();
+            Window1 win1 = new Window1(Window);
             win1.Show();
         }
     }

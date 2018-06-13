@@ -16,7 +16,8 @@ namespace Cennik.ViewModel
     {
         private DAL _dal = new DAL();
         private Prise _prise = new Prise();
-        
+        private Window2 Window { get; set; }
+
         public ICommand ClickCommand
         {
             get;
@@ -24,8 +25,9 @@ namespace Cennik.ViewModel
 
         }
         
-        public ViewModelWindow2(Przedmiot przedmiot, int idKat) 
+        public ViewModelWindow2(Przedmiot przedmiot, int idKat, Window2 window) 
         {
+            Window = window;
             Kategorie = _dal.FillCombo();
             ClickCommand = new DelegateCommand(ClickedMethodSave);
             Przedmiot = przedmiot;
@@ -76,7 +78,8 @@ namespace Cennik.ViewModel
         {
             var toSave = Przedmiot;
             int isPrise = _prise.IsPrise(toSave.Cena);
-            _dal.ChangeItemProp(toSave, isPrise);          
+            _dal.ChangeItemProp(toSave, isPrise);
+            Window.Close();   
         }
     }
 }

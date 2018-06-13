@@ -70,10 +70,10 @@ namespace Cennik.Bookmark
                         ),
                         new TableGrid(
                             new GridColumn() { Width = new StringValue("500") },
-                            new GridColumn() { Width = new StringValue("5200") },
+                            new GridColumn() { Width = new StringValue("10000") },
                             new GridColumn() { Width = new StringValue("700") },
-                            new GridColumn() { Width = new StringValue("1000") },
-                            new GridColumn() { Width = new StringValue("900") },
+                            new GridColumn() { Width = new StringValue("1050") },
+                            new GridColumn() { Width = new StringValue("950") },
 
                     new TableRow(
                         new TableCell(

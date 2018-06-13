@@ -1,23 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Cennik.Connection;
-using Cennik.Bookmark;
 using Cennik.ViewModel;
 using Cennik.View;
-using System.Collections.ObjectModel;
 
 namespace Cennik
 {
@@ -32,7 +18,7 @@ namespace Cennik
 
         public MainWindow()
         {
-            ViewModelMainWindow = new ViewModelMainWindow();
+            ViewModelMainWindow = new ViewModelMainWindow(this);
             InitializeComponent();
             CbKat.SelectedIndex = 0;
             
@@ -40,9 +26,8 @@ namespace Cennik
 
         private void CbKat_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var idKat = CbKat.SelectedValue;
-            dtGrid.ItemsSource = _dal.FillDataGridById(idKat);
-            
+
+            Refresh();
         }
 
         private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
@@ -52,6 +37,12 @@ namespace Cennik
 
             Window2 win2 = new Window2(selected, (int)idKat);
             win2.Show();
+        }
+
+        public void Refresh()
+        {
+            var idKat = CbKat.SelectedValue;
+            dtGrid.ItemsSource = _dal.FillDataGridById(idKat);
         }
     }
 }

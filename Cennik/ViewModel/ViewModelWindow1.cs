@@ -1,9 +1,4 @@
 ﻿using Cennik.Connection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Prism.Mvvm;
 using Prism.Commands;
 using System.Windows.Input;
@@ -16,6 +11,8 @@ namespace Cennik.ViewModel
     {        
         private Prise _prise = new Prise();
         private DAL _dal = new DAL();
+        private MainWindow MainWindow { get; set; }
+        private Window1 Window { get; set; }
 
         public ICommand ClickCommand
         {
@@ -24,8 +21,10 @@ namespace Cennik.ViewModel
 
         }
 
-        public ViewModelWindow1()
+        public ViewModelWindow1(Window1 window, MainWindow mainWindow)
         {
+            Window = window;
+            MainWindow = mainWindow;
             Kategorie = _dal.FillCombo();
             ClickCommand = new DelegateCommand(ClickedMethod);
             Przedmioty = new Przedmiot();
@@ -74,8 +73,8 @@ namespace Cennik.ViewModel
         {           
             int isPrise = _prise.IsPrise(_przedmioty.Cena);
             _dal.AddNewItem(_przedmioty,_sKategoria,isPrise, 0);
+            Window.Close();
+            MainWindow.Refresh();
         }
-
-
     }
 }
